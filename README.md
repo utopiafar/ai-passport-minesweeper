@@ -109,7 +109,7 @@ mkdir -p build/screenshots
 build/preview/minesweeper_preview build/screenshots
 ```
 
-This renders the application code with a 24 KB LVGL pool and 32-line RGB565
+This renders the application code with a 24 KB LVGL pool and 40-line RGB565
 buffer, including the BSP's rounded-screen geometry, to PPM images. It validates
 software rendering, not the physical display or ADC timing.
 

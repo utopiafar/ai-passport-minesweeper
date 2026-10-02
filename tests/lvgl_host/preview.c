@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 static uint16_t framebuffer[240 * 320];
-static uint16_t draw_buffer[240 * 32];
+static uint16_t draw_buffer[240 * 40]; // Match the current BSP's single DMA buffer.
 static ms_app_t app;
 static lv_obj_t *screen;
 

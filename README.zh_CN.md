@@ -88,7 +88,7 @@ mkdir -p build/screenshots
 build/preview/minesweeper_preview build/screenshots
 ```
 
-预览直接渲染应用代码，使用 24 KB LVGL 内存池和 32 行 RGB565 缓冲，
+预览直接渲染应用代码，使用 24 KB LVGL 内存池和 40 行 RGB565 缓冲，
 应用 BSP 圆角屏幕几何，输出 PPM 图片。该检查验证软件渲染，不能验证真实屏幕或 ADC 时序。
 
 实机需检查启动稳定性和堆内存、各页中文字形、数字/旗/雷/光标可见性、
