@@ -48,9 +48,9 @@ git status --short --branch
 （`espressif/esp32-wifi-lib`、`espressif/esp-lwip`、`ThrowTheSwitch/CMock` 等）。
 由于 v5.5.3 的 `.gitmodules` 条目全部是相对 URL，从该镜像克隆父仓库后，每个
 子模块会自动解析到同一镜像，无需单独的镜像改写步骤。从镜像克隆得到的
-checkout 与 GitHub 克隆完全一致：请核对 tag commit 与
-`https://github.com/espressif/esp-idf/releases/tag/v5.5.3` 相同（当前为
-`b31fcc7a314a44ad992b58f589f7d1d8a4fadff6`）。
+checkout 与 GitHub 克隆完全一致：请核对检出的提交是否与
+`https://github.com/espressif/esp-idf/releases/tag/v5.5.3` 的解引用提交相同（当前为
+`2c211b236707889e8400c4dc5644dd5c4ee071e0`）。
 
 旧版镜像安装脚本有时会在全局 Git 配置中写入按仓库的 `insteadOf` 重定向
 （`jihulab.com/esp-mirror/...`，或
@@ -150,8 +150,8 @@ IDF_GITHUB_ASSETS=dl.espressif.cn/github_assets \
     "${AI_PASSPORT_IDF_ROOT}/install.sh" esp32c3
 ```
 
-镜像发布了与 GitHub 相同的 v5.5.3 tag commit
-（`b31fcc7a314a44ad992b58f589f7d1d8a4fadff6`），并且托管了各子模块仓库本身，
+镜像发布了与 GitHub 相同的 v5.5.3 检出提交
+（`2c211b236707889e8400c4dc5644dd5c4ee071e0`），并且托管了各子模块仓库本身，
 因此得到的 checkout 与 GitHub 克隆完全一致。
 
 **Gitee 镜像及 esp-gitee-tools（备选）。**

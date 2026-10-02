@@ -64,9 +64,9 @@ v5.5.3 submodule repository (`espressif/esp32-wifi-lib`, `espressif/esp-lwip`,
 relative URLs, cloning the parent repository from the mirror resolves every
 submodule to the same mirror automatically; no separate submodule rewrite is
 needed. Cloning from the mirror leaves a working checkout identical to the
-GitHub clone: verify the tag commit matches
+GitHub clone: verify the checked-out commit matches the peeled v5.5.3 tag at
 `https://github.com/espressif/esp-idf/releases/tag/v5.5.3` (currently
-`b31fcc7a314a44ad992b58f589f7d1d8a4fadff6`).
+`2c211b236707889e8400c4dc5644dd5c4ee071e0`).
 
 Legacy mirror installers sometimes write a global per-repository `insteadOf`
 rewrite for Jihulab (`jihulab.com/esp-mirror/...`, or a
@@ -178,8 +178,8 @@ IDF_GITHUB_ASSETS=dl.espressif.cn/github_assets \
     "${AI_PASSPORT_IDF_ROOT}/install.sh" esp32c3
 ```
 
-The mirror has published the same v5.5.3 tag commit as GitHub
-(`b31fcc7a314a44ad992b58f589f7d1d8a4fadff6`), and it hosts the submodule
+The mirror has published the same v5.5.3 checked-out commit as GitHub
+(`2c211b236707889e8400c4dc5644dd5c4ee071e0`), and it hosts the submodule
 repositories themselves, so the checkout is identical to the GitHub clone.
 
 **Gitee mirror plus esp-gitee-tools (fallback).**

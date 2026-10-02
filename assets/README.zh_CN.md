@@ -15,12 +15,37 @@
 - 添加字库前评估 Flash 与内部 RAM 影响；ESP32-C3 无 PSRAM。
 - 不提交许可不允许分发的字库。
 
+### 扫雷中文字体子集
+
+- `fonts/NotoSansCJKsc-Minesweeper.otf` 是
+  [Noto Sans CJK SC Regular](https://github.com/notofonts/noto-cjk/tree/main/Sans) 的 204 字符子集。
+  原字体 SHA-256：`2c76254f6fc379fddfce0a7e84fb5385bb135d3e399294f6eeb6680d0365b74b`。
+  再分发遵守 `fonts/NotoSansCJK-LICENSE.txt`（SIL OFL 1.1）。
+- `fonts/ms_font_12.c` 和 `fonts/ms_font_14.c` 是未压缩的 4 bpp LVGL 位图字体，
+  通过 `main/CMakeLists.txt` 编译进应用。覆盖可打印 ASCII 和全部固定界面文字；
+  不接受任意用户文字或 LVGL 图标字符。格内数字使用 Montserrat 14。
+- `fonts/minesweeper_codepoints.h` 提供启动时的字符清单。
+  `tools/check_minesweeper_fonts.py` 检查生成的 cmap 表；启动和 LVGL 主机预览
+  还检查实际字形描述，并包含缺字反向测试。
+- 使用 fontTools 4.60.2 和 lv_font_conv 1.5.3 重生成：
+
+  ```bash
+  python3 tools/generate_minesweeper_fonts.py --font /path/to/NotoSansCJKsc-Regular.otf \
+    --converter /path/to/lv_font_conv
+  python3 tools/check_minesweeper_fonts.py
+  ```
+
+  脚本从 UI 源文件收集可打印 ASCII 与非 ASCII 字符，检查原字体 cmap，
+  裁剪 OTF 并生成两套无压缩、无字距调整的字体。字形位图放在只读 Flash；
+  中文实屏显示与运行时堆内存仍需实机检查。
+
 ## 图片（images）
 
 可复用的源图与生成的显示资产放在 `images/`。
 
 | 文件 | 尺寸与格式 | 用途与来源 |
 | --- | --- | --- |
+| [`images/minesweeper-preview.png`](images/minesweeper-preview.png) | 240 × 320，PNG RGB | 使用 LVGL 9.5.0 和 BSP 圆角屏幕几何，从应用代码渲染的扫雷软件预览。电量为示例值，并非设备照片。 |
 | [`images/home.jpg`](images/home.jpg) | 3840 × 2160，JPEG | 嵌入中英文项目 README 的产品主图，突出 AI Passport 产品形象与开放、人人可创作的理念。 |
 | [`images/readme-hardware-specs.png`](images/readme-hardware-specs.png) | 2172 × 724，PNG RGBA | 保留为可选技术参考图，不再用于首页主视觉。于 2026-09-17 使用内置图像生成工具为本仓库生成；已根据文档中的硬件能力契约核对图中的六项标签与参数。 |
 | [`images/logo-wordmark.png`](images/logo-wordmark.png) | 1648 × 336，PNG RGBA | 从仓库原始 `images/logo.png` 中精确裁切并去除背景的黑色字标；用于中英文项目 README 的浅色主题。 |
